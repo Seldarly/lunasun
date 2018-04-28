@@ -38,6 +38,34 @@ var burger_menu;
         
 $(document).ready(function(){
     BrowserDetect.init();
+
+    //Initialize particles on the main slide
+    $('.section.section-header .container').particleground({
+        dotColor: '#ddd',
+        lineColor: '#fff',
+        particleRadius: 5,
+        curveLines: true,
+        density: 9000,
+        proximity: 80
+    });
+    //Initialize particles on paralax images
+    $('.section-team-1 .full-image').particleground({
+        dotColor: '#FFE4B5',
+        lineColor: '#FFE4B5',
+        particleRadius: 6,
+        curveLines: true,
+        density: 9000,
+        proximity: 0
+    });
+    $('.pg-canvas').css({
+        position: 'absolute',
+        opacity: '.35'
+    });
+    $($('.pg-canvas')[1]).css({
+        'z-index': 2,
+        opacity: '.65',
+        top: 0
+    });
     
     if(BrowserDetect.browser == 'Explorer' && BrowserDetect.version <= 9){
         $('body').html(better_browser);   
@@ -114,8 +142,10 @@ $(window).resize(function(){
 $(window).on('scroll',function(){
    rubik.checkScrollForTransparentNavbar();    
    
-   if(window_width > 992){
+   if(window_width > 768) {
         rubik.checkScrollForParallax();
+   } else {
+        rubik.checkScrollForParallax(true);
    }
    
    if(content_opacity == 1){
@@ -300,7 +330,7 @@ rubik = {
             }
     }, 17),
     
-    checkScrollForParallax: debounce(function() {	
+    checkScrollForParallax: debounce(function(/*Boolean*/_flag) {	
         	no_of_elements = 0;
         	$('.parallax').each(function() {
         	    var $elem = $(this);
@@ -310,8 +340,13 @@ rubik = {
                   var window_bottom = $(window).scrollTop();
                   var $image = $elem.children('img');
                               	  
-            	  oVal = ((window_bottom - parent_top) / 3);
-                  $image.css('transform','translate3d(0px, ' + oVal + 'px, 0px)');    
+            	  if(_flag) {
+                      oVal = ((window_bottom - parent_top) / 15);
+                  } else {
+                      oVal = ((window_bottom - parent_top) / 3);
+                  }
+                  
+                  $image.css('transform','translate3d(-50%, ' + oVal + 'px, 0px)');    
         	    }
             });
     		
@@ -385,10 +420,10 @@ rubik = {
     },
     
     initGoogleMaps: function(){
-        var myLatlng = new google.maps.LatLng(44.433530, 26.093928);
+        var myLatlng = new google.maps.LatLng(53.966798, 26.763763);
         
         var mapOptions = {
-          zoom: 16,
+          zoom: 13,
           center: myLatlng,
           scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
           disableDefaultUI: true,
@@ -398,7 +433,7 @@ rubik = {
         
         var marker = new google.maps.Marker({
             position: myLatlng,
-            title:"Hello World!"
+            title: "Терраски"
         });
         
         // To add the marker to the map, call setMap();
@@ -431,6 +466,10 @@ function isElementInViewport(elem) {
 
     // Get the scroll position of the page.
     var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
+    if(navigator.userAgent.toLowerCase().indexOf('chrome') != -1) {
+        scrollElem = 'html';
+    }
+    
     var viewportTop = $(scrollElem).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
 

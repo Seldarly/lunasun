@@ -1,0 +1,166 @@
+body {
+    /* Location of the image */
+    background-image: url(../img/index-main-bg.jpg);
+    
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    
+    /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
+    
+    /* Set a background color that will be displayed
+       while the background image is loading */
+    background-color: #464646;
+}
+
+.content p {
+    font-family: "Avenir-Next-Eng", "Avenir-Next-Ru", sans-serif !important;
+}
+
+a.enter {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    text-decoration: none;
+    padding-top: 1em;
+    padding-right: calc(1.54em - .2em);
+    padding-bottom: 1em;
+    padding-left: 1.54em;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -moz-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -ms-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -o-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+}
+a.enter:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 1);
+    color: #666;
+    -webkit-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -moz-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -ms-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -o-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+}
+
+/* Override default theme */
+.lunasun-landing .wrapper {
+    background: none !important;
+    background-color: transparent !important;
+}
+.lunasun-landing .section {
+    background: none !important;
+}
+.lunasun-landing .section-header {
+    background: none !important;
+}
+.lunasun-landing .pattern-image:after {
+    background: none !important;
+}
+
+@media (max-width: 992px) {
+    .section-header .content h5 {
+        font-size: 1.125em;
+        margin-top: 0px !important;
+    }
+}
+
+/* Video */
+.vidcover {
+    background: #000;
+    opacity: 0.2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: opacity 800ms ease 0.2s;
+    -moz-transition: opacity 800ms ease 0.2s;
+    -ms-transition: opacity 800ms ease 0.2s;
+    transition: opacity 800ms ease 0.2s;
+}
+
+.fullvid {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    z-index: -2;
+    -webkit-transform: translate(-50%, 50%);
+    -moz-transform: translate(-50%, 50%);
+    -ms-transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%);
+    -webkit-transition: all 400ms ease-out 400ms;
+    -moz-transition: all 400ms ease-out 400ms;
+    -ms-transition: all 400ms ease-out 400ms;
+    transition: all 400ms ease-out 400ms;
+}
+
+/* Timer */
+.countdown {
+    font-family: "Avenir-Next-Eng", "Avenir-Next-Ru", sans-serif;
+    text-transform: uppercase;
+}
+
+.countdown > div { display: inline-block; }
+
+.countdown > div > span {
+    display: block;
+    text-align: center;
+}
+
+.countdown-container { margin: 0 3px; }
+
+.countdown-container .countdown-heading {
+    font-size: 1em;
+    margin: 3px;
+    color: #fff
+}
+
+.countdown-container .countdown-value {
+    font-size: 3em;
+    padding: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+/* Change background and add shadow for the text for mobile devices and increase font-size */
+@media only screen and (max-width: 767px) {
+    body {
+      /* The file size of this background image is 93% smaller
+         to improve page load speed on mobile internet connections */
+      background-image: url(../img/index-main-bg_mobile.jpg);
+    }
+    p, h5, .countdown-heading {
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.4) !important;
+    }
+    .section-header .content p {
+        font-size: 1.125em;
+        margin-top: 0px !important;
+    }
+    .countdown-container .countdown-heading {
+        font-size: .75em;
+        margin: 3px;
+        color: #fff
+    }
+    
+    .countdown-container .countdown-value {
+        font-size: 2em;
+        padding: 10px;
+        color: #fff;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    }
+}
